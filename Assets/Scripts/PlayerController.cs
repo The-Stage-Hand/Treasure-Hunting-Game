@@ -9,9 +9,10 @@ public class PlayerController : MonoBehaviour {
     //movement controls
 	public static bool canMove;
 	public float movespeed = 2f;
-    public static int health = 4;
+    public static int health = 5;
     public static bool Vulnerable = true;
 
+    
 	// Use this for initialization
 	void Start ()
     {
@@ -49,6 +50,19 @@ public class PlayerController : MonoBehaviour {
             {
 
             }
+
+            //Combat controls
+            if (Input.GetKey(KeyCode.Space))
+            {
+                //Player stops a second
+                canMove = false;
+                //player does sword animation
+
+                //FIXME:add both an animation for 4 dirictional swinging, as well as starting and stopping hitboxes in the animation
+
+                //player goes back to moving
+                canMove = true;
+            }
         }
         
 
@@ -74,11 +88,10 @@ public class PlayerController : MonoBehaviour {
         }
     }
 
-    void KnockBack()
+     void KnockBack()
     {
         Vulnerable = false;
-        //set animation bool
-        //move back a few squares
+        
         Vulnerable = true;
     }
 
