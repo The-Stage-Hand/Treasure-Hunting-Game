@@ -11,13 +11,17 @@ public class PlayerController : MonoBehaviour {
 	public float movespeed = 2f;
     public static int health = 5;
     public static bool Vulnerable = true;
+    public GameObject player;
+    public static int CashCount;
 
-    
-	// Use this for initialization
-	void Start ()
+
+    // Use this for initialization
+    void Start ()
     {
+        PlayerAnim.GetComponent<Animator>();
         canMove = true;
-	}
+        CashCount = 0;
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -48,7 +52,7 @@ public class PlayerController : MonoBehaviour {
             }
             if (Input.GetKey(KeyCode.Space)) //Sword Attack
             {
-
+                
             }
 
             //Combat controls
@@ -59,7 +63,7 @@ public class PlayerController : MonoBehaviour {
                 //player does sword animation
 
                 //FIXME:add both an animation for 4 dirictional swinging, as well as starting and stopping hitboxes in the animation
-
+                
                 //player goes back to moving
                 canMove = true;
             }
@@ -69,11 +73,13 @@ public class PlayerController : MonoBehaviour {
         //Death sequence
         if(health <= 0)
         {
-            //turn off player boxcollider
+            //turn off player boxcollider and movement
             canMove = false;
+            player.GetComponent<BoxCollider2D>().enabled = false;
             //turn off the ui elements
             //play player death animation
             //call gameover sequence
+            GameOver();
         }
     }
 

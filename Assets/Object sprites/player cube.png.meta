@@ -1,18 +1,19 @@
 fileFormatVersion: 2
-guid: a013fb132f9114d4497fb3f9e2bdf800
-timeCreated: 1762782779
+guid: 9c41dcd33c17383499369d0d07026d53
+timeCreated: 1762863720
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: cube player_0
-    21300002: cube player_1
-    21300004: cube player_2
-    21300006: cube player_3
-    21300008: cube player_4
-    21300010: cube player_5
-    21300012: cube player_6
-    21300014: cube player_7
-    21300016: cube player_8
+    21300000: player cube_0
+    21300002: player cube_1
+    21300004: player cube_2
+    21300006: player cube_3
+    21300008: player cube_4
+    21300010: player cube_5
+    21300012: player cube_6
+    21300014: player cube_7
+    21300016: player cube_8
+    21300018: player cube_9
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -84,7 +85,49 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: cube player_0
+      name: player cube_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player cube_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player cube_2
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: player cube_3
       rect:
         serializedVersion: 2
         x: 0
@@ -98,7 +141,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_1
+      name: player cube_4
       rect:
         serializedVersion: 2
         x: 32
@@ -112,7 +155,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_2
+      name: player cube_5
       rect:
         serializedVersion: 2
         x: 64
@@ -126,7 +169,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_3
+      name: player cube_6
       rect:
         serializedVersion: 2
         x: 0
@@ -140,7 +183,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_4
+      name: player cube_7
       rect:
         serializedVersion: 2
         x: 32
@@ -154,7 +197,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_5
+      name: player cube_8
       rect:
         serializedVersion: 2
         x: 64
@@ -168,38 +211,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: cube player_6
+      name: player cube_9
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: cube player_7
-      rect:
-        serializedVersion: 2
-        x: 32
-        y: 0
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: cube player_8
-      rect:
-        serializedVersion: 2
-        x: 64
         y: 0
         width: 32
         height: 32
