@@ -4,21 +4,23 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	public static Animator PlayerAnim;
-
+	private Animator PlayerAnim;
+    public Vector3 change;
     //movement controls
 	public static bool canMove;
 	public float movespeed = 2f;
     public static int health = 5;
     public static bool Vulnerable = true;
+    public static bool attacking = false;
     public GameObject player;
     public static int CashCount;
+    
 
 
     // Use this for initialization
     void Start ()
     {
-        PlayerAnim.GetComponent<Animator>();
+        PlayerAnim = GetComponent<Animator>();
         canMove = true;
         CashCount = 0;
     }
@@ -29,6 +31,9 @@ public class PlayerController : MonoBehaviour {
         //Movement controls
         if (canMove == true)
         {
+            change = Vector3.zero;
+            change.x = Input.GetAxisRaw("Horizontal");
+            change.y = Input.GetAxisRaw("Vertical");
             //4 way walking movement
             if (Input.GetKey(KeyCode.A)) //Left Movement
             {
@@ -50,22 +55,31 @@ public class PlayerController : MonoBehaviour {
                 transform.position +=
                 new Vector3(0, movespeed * Time.deltaTime);
             }
-            if (Input.GetKey(KeyCode.Space)) //Sword Attack
+
+            if(change != Vector3.zero)
             {
-                
+                PlayerAnim.SetFloat("moveX", change.x);
+                PlayerAnim.SetFloat("moveY", change.y);
+                PlayerAnim.SetBool("moving", true);
+            }
+            else
+            {
+                PlayerAnim.SetBool("moving", false);
             }
 
             //Combat controls
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKey(KeyCode.Space) && !attacking)
             {
+                attacking = true;
                 //Player stops a second
                 canMove = false;
                 //player does sword animation
+                PlayerAnim.SetBool("attacking", true);
 
-                //FIXME:add both an animation for 4 dirictional swinging, as well as starting and stopping hitboxes in the animation
-                
                 //player goes back to moving
                 canMove = true;
+                attacking = true;
+                PlayerAnim.SetBool("attacking", false);
             }
         }
         
