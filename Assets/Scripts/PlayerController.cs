@@ -68,11 +68,12 @@ public class PlayerController : MonoBehaviour {
             }
 
             //Combat controls
-            if (Input.GetKey(KeyCode.Space) && !attacking)
+            if (Input.GetKey(KeyCode.Space))
             {
-                attacking = true;
+                
+                //attacking = true;
                 //Player stops a second
-                canMove = false;
+                //canMove = false;
                 //player does sword animation
                 PlayerAnim.SetBool("attacking", true);
 
