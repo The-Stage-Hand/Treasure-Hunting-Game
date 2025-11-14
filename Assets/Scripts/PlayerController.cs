@@ -68,22 +68,13 @@ public class PlayerController : MonoBehaviour {
             }
 
             //Combat controls
-            if (Input.GetKey(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space))
             {
-                
-                //attacking = true;
-                //Player stops a second
-                //canMove = false;
-                //player does sword animation
-                PlayerAnim.SetBool("attacking", true);
-
-                //player goes back to moving
-                canMove = true;
-                attacking = true;
-                PlayerAnim.SetBool("attacking", false);
+                canMove = false;
+                Debug.Log("starting..");
+                StartCoroutine(SwingSword());
             }
         }
-        
 
         //Death sequence
         if(health <= 0)
@@ -96,6 +87,15 @@ public class PlayerController : MonoBehaviour {
             //call gameover sequence
             GameOver();
         }
+    }
+
+
+    private IEnumerator SwingSword()
+    {
+        PlayerAnim.SetBool("Attack", true);
+        yield return new WaitForSeconds(.3f);
+        PlayerAnim.SetBool("Attack", false);
+        canMove = true;
     }
 
     void onCollisionEnter2D(Collider2D other)
