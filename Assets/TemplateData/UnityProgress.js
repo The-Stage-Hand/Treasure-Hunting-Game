@@ -1,4 +1,4 @@
-function UnityProgress(gameInstance, progress) {
+/*function UnityProgress(gameInstance, progress) {
   if (!gameInstance.Module)
     return;
   if (!gameInstance.logo) {
@@ -22,4 +22,4 @@ function UnityProgress(gameInstance, progress) {
   if (progress == 1)
     gameInstance.logo.style.display = gameInstance.progress.style.display = "none";
 }
-//FIXME: any lines set to notes cause the program to not work
+//FIXME: any lines set to notes cause the program to not work */
