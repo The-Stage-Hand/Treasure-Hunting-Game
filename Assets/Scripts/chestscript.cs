@@ -10,21 +10,23 @@ public class chestscript : MonoBehaviour {
 	// Use this for initialization
 	void Start() {
 		anim = GetComponent<Animator>();
-		anim.SetTrigger("closed");
+	
 	}
 
 	// Update is called once per frame
 	void Update() {
-		anim.SetTrigger("closed");
+	
 	}
 
 
 
-	void Oncollisionentert2d(Collision collision) 
+	void OnCollisionEntert2d(Collision collision) 
 	{
 	if (collision.gameObject.CompareTag("Player"))
 		{
-			anim.SetTrigger("open");
+			Debug.Log("opened chest start");
+			anim.SetBool("open", true);
+			Debug.Log("opened chest end");
 		
 		}
 	
