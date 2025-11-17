@@ -19,8 +19,8 @@ public class chestscript : MonoBehaviour {
 	}
 
 
-
-	void OnCollisionEntert2d(Collision collision) 
+	
+	void OnCollisionEntert2d(Collision collision) //FIXME: make this work proper
 	{
 	if (collision.gameObject.CompareTag("Player"))
 		{
