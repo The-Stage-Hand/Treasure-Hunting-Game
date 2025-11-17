@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
@@ -14,12 +15,13 @@ public class PlayerController : MonoBehaviour {
     public static bool attacking = false;
     public GameObject player;
     public static int CashCount;
-    
+    public Text healthText;
 
 
     // Use this for initialization
     void Start ()
     {
+        healthText.text = "Hp: " + health;
         PlayerAnim = GetComponent<Animator>();
         canMove = true;
         CashCount = 0;
@@ -100,12 +102,14 @@ public class PlayerController : MonoBehaviour {
 
     void onCollisionEnter2D(Collider2D other)
     {
-        if (other.gameObject.tag == "Enemy" && Vulnerable)
+        if (other.gameObject.tag == "enemy")
         {
+            Debug.Log("owch begin");
             //take damage
             health--;
-
+            healthText.text = "Hp: " + health;
             //Call knockback sequence
+            Debug.Log("owch end");
         }
     }
 
