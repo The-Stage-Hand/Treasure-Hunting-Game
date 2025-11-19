@@ -16,8 +16,11 @@ public class PlayerController : MonoBehaviour {
     public GameObject player;
     public static int CashCount;
     public Text healthText;
-
-
+    public Color flash;
+    public Color normal;
+    public int FlashNum;
+    public float flashTime;
+    public SpriteRenderer mysprite;
     // Use this for initialization
     void Start ()
     {
@@ -104,19 +107,36 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.gameObject.tag == "enemy")
         {
-            Debug.Log("owch begin");
-            //take damage
-            health--;
-            healthText.text = "Hp: " + health;
-            //Call knockback sequence
-            Debug.Log("owch end");
+            if (Vulnerable)
+            {
+                Debug.Log("owch begin");
+                //take damage
+                health--;
+                healthText.text = "Hp: " + health;
+                //Call knockback sequence
+                StartCoroutine(KnockBack());
+                Debug.Log("owch end");
+            }
         }
     }
 
-     void KnockBack()
+     IEnumerator KnockBack()
     {
+        //play damage sound
+
         Vulnerable = false;
-        
+        //start blinking
+        int time = 0; 
+        while (time < FlashNum)
+        {
+            mysprite.color = flash;
+            yield return new WaitForSeconds(flashTime);
+            mysprite.color = normal;
+            yield return new WaitForSeconds(flashTime);
+            time++;
+            Debug.Log( time );
+        }
+        mysprite.color = normal;
         Vulnerable = true;
     }
 

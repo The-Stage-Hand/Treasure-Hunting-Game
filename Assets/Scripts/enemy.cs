@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Runtime.Serialization.Configuration;
 using UnityEngine;
 
 public class enemy : MonoBehaviour
@@ -35,10 +36,13 @@ public class enemy : MonoBehaviour
         }
     }
 
-	void OnCollisionEnter2D(Collision2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
         //FIXME: add parameter to die to sword swing
-        
+        if (other.gameObject.tag == "attack")
+        {
+            Destroy(gameObject);
+        }
 	}
 
     IEnumerator Wait()
