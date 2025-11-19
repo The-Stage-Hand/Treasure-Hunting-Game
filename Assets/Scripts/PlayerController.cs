@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour {
     {
         if (other.gameObject.tag == "enemy")
         {
-            if (Vulnerable)
+            if (Vulnerable && health > 1)
             {
                 Debug.Log("owch begin");
                 //take damage
@@ -116,6 +116,10 @@ public class PlayerController : MonoBehaviour {
                 //Call knockback sequence
                 StartCoroutine(KnockBack());
                 Debug.Log("owch end");
+            }
+            else
+            {
+                GameOver();
             }
         }
     }

@@ -6,6 +6,7 @@ public class chestscript : MonoBehaviour {
 
 
 	Animator anim;
+	public GameObject popup;
 
 	// Use this for initialization
 	void Start() {
