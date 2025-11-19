@@ -100,7 +100,7 @@ public class PlayerController : MonoBehaviour {
         canMove = true;
     }
 
-    void onCollisionEnter2D(Collider2D other)
+    void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
     {
         if (other.gameObject.tag == "enemy")
         {

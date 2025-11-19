@@ -19,17 +19,14 @@ public class chestscript : MonoBehaviour {
 	}
 
 
-	
-	void OnCollisionEntert2d(Collision collision) //FIXME: make this work proper
-	{
-	if (collision.gameObject.CompareTag("Player"))
-		{
-			Debug.Log("opened chest start");
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            Debug.Log("opened chest start");
 			anim.SetBool("open", true);
 			Debug.Log("opened chest end");
-		
 		}
-	
-	
 	}
 }

@@ -35,9 +35,10 @@ public class enemy : MonoBehaviour
         }
     }
 
-	void OnTriggerEnter2D(Collider2D other)
+	void OnCollisionEnter2D(Collision2D other)
 	{
-        //FIXME: add parameter to die to sword swing-
+        //FIXME: add parameter to die to sword swing
+        
 	}
 
     IEnumerator Wait()
