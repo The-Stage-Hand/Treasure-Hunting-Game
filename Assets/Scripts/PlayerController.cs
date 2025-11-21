@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour {
     public int FlashNum;
     public float flashTime;
     public SpriteRenderer mysprite;
+    public Text popuptext;
     // Use this for initialization
     void Start ()
     {
@@ -121,6 +122,14 @@ public class PlayerController : MonoBehaviour {
             {
                 GameOver();
             }
+        }
+
+        if (other.gameObject.tag == "chest")
+        {
+            popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
+
+
+
         }
     }
 

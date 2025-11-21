@@ -6,6 +6,7 @@ TagManager:
   tags:
   - enemy
   - attack
+  - chest
   layers:
   - Default
   - TransparentFX
