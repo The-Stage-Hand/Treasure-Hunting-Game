@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour {
     public float flashTime;
     public SpriteRenderer mysprite;
     public Text popuptext;
+    AudioSource aud;
+    public AudioClip hurt, money, swing;
     // Use this for initialization
     void Start ()
     {
@@ -102,13 +104,14 @@ public class PlayerController : MonoBehaviour {
         yield return new WaitForSeconds(.3f);
         PlayerAnim.SetBool("Attack", false);
         canMove = true;
+        aud.PlayOneShot(swing);
     }
 
-    void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
+void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
     {
         if (other.gameObject.tag == "enemy")
         {
-            if (Vulnerable && health > 1)
+            if (Vulnerable && health > 0)
             {
                 Debug.Log("owch begin");
                 //take damage
@@ -117,6 +120,7 @@ public class PlayerController : MonoBehaviour {
                 //Call knockback sequence
                 StartCoroutine(KnockBack());
                 Debug.Log("owch end");
+                aud.PlayOneShot(hurt);
             }
             else
             {
@@ -126,7 +130,10 @@ public class PlayerController : MonoBehaviour {
 
         if (other.gameObject.tag == "chest")
         {
+            aud.PlayOneShot(money);
             popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
+       
+            Destroy(popuptext);
 
 
 
