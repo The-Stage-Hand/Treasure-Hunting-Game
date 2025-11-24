@@ -5,17 +5,19 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
 
-	private Animator PlayerAnim;
+    private Animator PlayerAnim;
     public Vector3 change;
     //movement controls
-	public static bool canMove;
-	public float movespeed = 2f;
+    public static bool canMove;
+    public float movespeed = 2f;
     public static int health = 5;
+    public static int cash = 0;
     public static bool Vulnerable = true;
     public static bool attacking = false;
     public GameObject player;
     public static int CashCount;
     public Text healthText;
+    public Text cashText;
     public Color flash;
     public Color normal;
     public int FlashNum;
@@ -25,16 +27,17 @@ public class PlayerController : MonoBehaviour {
     AudioSource aud;
     public AudioClip hurt, money, swing;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         healthText.text = "Hp: " + health;
+        cashText.text = "cash: " + cash;
         PlayerAnim = GetComponent<Animator>();
         canMove = true;
         CashCount = 0;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update() {
 
         //Movement controls
         if (canMove == true)
@@ -64,7 +67,7 @@ public class PlayerController : MonoBehaviour {
                 new Vector3(0, movespeed * Time.deltaTime);
             }
 
-            if(change != Vector3.zero)
+            if (change != Vector3.zero)
             {
                 PlayerAnim.SetFloat("moveX", change.x);
                 PlayerAnim.SetFloat("moveY", change.y);
@@ -85,7 +88,7 @@ public class PlayerController : MonoBehaviour {
         }
 
         //Death sequence
-        if(health <= 0)
+        if (health <= 0)
         {
             //turn off player boxcollider and movement
             canMove = false;
@@ -107,7 +110,7 @@ public class PlayerController : MonoBehaviour {
         aud.PlayOneShot(swing);
     }
 
-void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
+    void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
     {
         if (other.gameObject.tag == "enemy")
         {
@@ -131,22 +134,20 @@ void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
         if (other.gameObject.tag == "chest")
         {
             aud.PlayOneShot(money);
-            popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
-       
-            Destroy(popuptext);
+            StartCoroutine(treasurepopup());
 
 
 
         }
     }
 
-     IEnumerator KnockBack()
+    IEnumerator KnockBack()
     {
         //play damage sound
 
         Vulnerable = false;
         //start blinking
-        int time = 0; 
+        int time = 0;
         while (time < FlashNum)
         {
             mysprite.color = flash;
@@ -154,11 +155,22 @@ void OnCollisionEnter2D(Collision2D other)  //FIXME: collisions not registering
             mysprite.color = normal;
             yield return new WaitForSeconds(flashTime);
             time++;
-            Debug.Log( time );
+            Debug.Log(time);
         }
         mysprite.color = normal;
         Vulnerable = true;
     }
+
+    IEnumerator treasurepopup()
+    {
+        popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
+        cash++;
+      cashText.text = "cash: " + cash;
+        yield return new WaitForSeconds(5f);
+        Destroy(popuptext);
+
+    }
+
 
     void GameOver()
     {
