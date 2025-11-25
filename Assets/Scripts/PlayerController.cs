@@ -1,6 +1,7 @@
-﻿ using System.Collections;
+﻿  using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour {
@@ -133,6 +134,10 @@ public class PlayerController : MonoBehaviour {
 
         if (other.gameObject.tag == "chest")
         {
+            popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
+            cash++;
+            cash++;
+            cashText.text = "cash: " + cash;
             aud.PlayOneShot(money);
             StartCoroutine(treasurepopup());
 
@@ -163,19 +168,19 @@ public class PlayerController : MonoBehaviour {
 
     IEnumerator treasurepopup()
     {
-        popuptext.text = "you found treasure! \n placeholder text \n worth: n/a";
-        cash++;
-      cashText.text = "cash: " + cash;
+     
         yield return new WaitForSeconds(5f);
         Destroy(popuptext);
 
     }
 
 
-    void GameOver()
+    IEnumerable GameOver()
     {
         //play death music
         //play fade out animation
         //load retry and quit buttons
+        yield return new WaitForSeconds(5f);
+       
     }
 }
